@@ -1,0 +1,32 @@
+[
+    {
+        "textOverlay": "Image 1 Text Overlay",
+        "width": 200,
+        "height": 200,
+        "backgroundColor": "#D3D3D3",
+        "textColor": "#000000",
+        "fontSize": 48,
+        "autoFontSize": true,
+        "format": "png"
+    },
+    {
+        "textOverlay": "Image 2 Text Overlay",
+        "width": 300,
+        "height": 300,
+        "backgroundColor": "#FF0000",
+        "textColor": "#FFFFFF",
+        "fontSize": 36,
+        "autoFontSize": true,
+        "format": "png"
+    },
+    {
+        "textOverlay": "Image 3 Text Overlay",
+        "width": 400,
+        "height": 400,
+        "backgroundColor": "#00FF00",
+        "textColor": "#0000FF",
+        "fontSize": 24,
+        "autoFontSize": false,
+        "format": "png"
+    }
+]
