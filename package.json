@@ -1,14 +1,14 @@
 {
   "name": "ez-image-gen",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "EzImageGen is a simple Node.js command-line tool that allows you to quickly generate images from either a list or from the CLI",
-  "main": "ez-image-gen.js",
+  "main": "imageProcessor.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "ez-image-gen": "./ez-image-gen.js"
+    "ez-image-gen": "./cli.js"
   },
   "repository": {
     "type": "git",
@@ -16,16 +16,12 @@
   },
   "keywords": [
     "image",
+    "image generator",
+    "bulk image generator",
     "generator",
+    "images",
     "bulk",
-    "image",
-    "generator",
-    "easy",
-    "image",
-    "generator",
-    "fast",
-    "image",
-    "generation"
+    "bulk images"
   ],
   "author": "ECOMGRADUATES LLC",
   "license": "MIT",
@@ -34,9 +30,11 @@
   },
   "homepage": "https://github.com/EcomGraduates/ez-image-gen#readme",
   "dependencies": {
+    "axios": "^1.6.3",
+    "canvas": "^2.11.2",
     "fs": "^0.0.1-security",
     "path": "^0.12.7",
-    "sharp": "^0.32.6",
+    "sharp": "^0.33.1",
     "yargs": "^17.7.2"
   }
 }
