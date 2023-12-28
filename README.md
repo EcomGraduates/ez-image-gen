@@ -1,7 +1,7 @@
 ---
-# Image Generator CLI
+# Image Generator CLI 
 
-Image Generator CLI is a Node.js command-line utility for creating images with customizable text overlays. It allows users to quickly generate images with specific dimensions, background colors, and text properties, useful for batch processing image creation for various needs such as placeholders, test data, or social media.
+Image Generator CLI is a Node.js command-line utility for creating images with customizable text overlays and watermarks. It allows users to quickly generate images with specific dimensions, background colors, text properties, and watermarking, useful for batch processing image creation for various needs such as placeholders, test data, or social media.
 
 ## Getting Started
 
@@ -20,6 +20,7 @@ This tool requires the following npm packages:
 - `sharp` - A high-performance Node.js image processing library used to generate images.
 - `yargs` & `@yargs/helpers` - Libraries to help build interactive command-line tools by parsing arguments and generating an elegant user interface.
 - `fs` & `path` - Core Node.js modules to handle the file system and file paths.
+- `canvas` - A Node.js module that provides a Canvas API for Node.js, used for image manipulation such as applying opacity to watermarks.
 
 ## Usage
 
@@ -35,23 +36,27 @@ This command generates 5 images with default settings.
 
 ### Customize Image Properties
 
-You can customize the width, height, background color, text color, and font size of the images:
+You can customize the width, height, background color, text color, font size, and watermark of the images:
 
 ```
-node ez-image-gen.js --amount 1 --width 300 --height 300 --bg "#FFFFFF" --tc "#000000" --fontSize 24
+node ez-image-gen.js --amount 1 --width 300 --height 300 --bg "#FFFFFF" --tc "#000000" --fontSize 24 --watermark "{"path":"path/to/watermark.png","position":"southeast","opacity":0.6,"width":100,"height":100}"
 ```
 
-This will generate a 300x300 image with a white background, black text, and font size 24.
+This will generate a 300x300 image with a white background, black text, font size 24, and a watermark at the southeast position with 60% opacity.
+
+### Watermark Options
+
+You can add a watermark to your images by specifying the watermark option in the JSON configuration. The watermark option should include:
+
+- `path`: URL or local path to the watermark image.
+- `position`: Position of the watermark on the image (e.g., `center`, `southeast`, `northwest`).
+- `opacity`: Opacity level of the watermark, ranging from 0 (fully transparent) to 1 (fully opaque).
+- `width`: Width of the watermark in pixels.
+- `height`: Height of the watermark in pixels.
 
 ### Use a Text or JSON List for Bulk Generation
 
-To generate images using a list of text overlays, use the `--list` option with a `.txt` or `.json` file:
-
-```
-node ez-image-gen.js --list path/to/textList.txt
-```
-
-For advanced customization, use a `.json` file with specific properties for each image:
+To generate images using a list of text overlays and watermarks, use the `--list` option with a `.json` file:
 
 ```
 node ez-image-gen.js --list path/to/configList.json
@@ -83,8 +88,6 @@ node ez-image-gen.js --amount 1 --output path/to/outputDirectory
 
 ## Installing via NPM
 
-In the future, if the tool is published to npm:
-
 ```
 npm i ez-image-gen
 ```
@@ -96,6 +99,53 @@ After installation, you can run the tool directly:
 ```
 ez-image-gen --amount 10 --prefix "custom-" --format png --output "./output"
 ```
+
+---
+
+## Using as a Node.js Module
+
+In addition to being a command-line utility, Image Generator CLI can also be used as a module in your Node.js projects. This feature allows you to integrate image generation capabilities directly into your applications.
+
+### Module Installation
+
+If you have not already cloned the repository and installed dependencies:
+
+```
+npm install ez-image-gen
+```
+
+### Usage as a Module
+
+To use Image Generator in your Node.js application, import the `generateImage` function from the `ez-image-gen` package:
+
+```javascript
+import { generateImage } from 'ez-image-gen';
+
+const options = {
+  width: 300,
+  height: 300,
+  backgroundColor: "#FFFFFF",
+  textColor: "#000000",
+  fontSize: 24,
+  textOverlay: "Your Text Here",
+  watermark: {
+    path: "path/to/watermark.png",
+    position: "southeast",
+    opacity: 0.6,
+    width: 100,
+    height: 100
+  },
+  outputPath: "./output",
+  filename: "custom-image",
+  format: "png"
+};
+
+generateImage(options)
+  .then(() => console.log('Image generated successfully'))
+  .catch(err => console.error(err));
+```
+
+This will generate an image based on the specified options and save it to the output path.
 
 ## Contributing
 
