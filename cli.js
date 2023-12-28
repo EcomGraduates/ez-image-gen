@@ -79,7 +79,7 @@ const argv = yargs(hideBin(process.argv))
     type: 'boolean',
     default: false
   })
-  .option('watermark', {
+  .option('watermarks', {
     describe: 'Watermark settings',
     type: 'object',
     coerce: arg => {
