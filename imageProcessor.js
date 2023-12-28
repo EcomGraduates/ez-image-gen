@@ -4,7 +4,6 @@ import sharp from 'sharp';
 import axios from 'axios';
 import { createCanvas, loadImage } from 'canvas';
 
-
 export const downloadImage = async (url) => {
   const response = await axios({ url, responseType: 'arraybuffer' });
   return Buffer.from(response.data, 'binary');
@@ -21,36 +20,46 @@ export const applyOpacityToWatermark = async (watermarkBuffer, opacity) => {
   return canvas.toBuffer();
 };
 
-export const addWatermark = async (baseImage, watermarkOptions) => {
-  let watermarkImage;
+export const addWatermarks = async (baseImage, watermarkOptionsArray) => {
+  let finalImage = baseImage;
 
-  if (watermarkOptions.path.startsWith('http')) {
-    watermarkImage = await downloadImage(watermarkOptions.path);
-  } else {
-    watermarkImage = fs.readFileSync(watermarkOptions.path);
+  for (let watermarkOptions of watermarkOptionsArray) {
+    let watermarkImage;
+
+    if (watermarkOptions.path.startsWith('http')) {
+      watermarkImage = await downloadImage(watermarkOptions.path);
+    } else {
+      watermarkImage = fs.readFileSync(watermarkOptions.path);
+    }
+
+    let resizedWatermark = await sharp(watermarkImage)
+      .resize({
+        width: watermarkOptions.width,
+        height: watermarkOptions.height,
+        fit: sharp.fit.cover,
+        background: { r: 0, g: 0, b: 0, alpha: 0 }
+      })
+      .toFormat('png')
+      .toBuffer();
+
+    let transparentWatermark = await applyOpacityToWatermark(resizedWatermark, watermarkOptions.opacity);
+
+    if (watermarkOptions.rotation) {
+      transparentWatermark = await sharp(transparentWatermark)
+        .rotate(watermarkOptions.rotation, { background: { r: 0, g: 0, b: 0, alpha: 0 } })
+        .toBuffer();
+    }
+
+    finalImage = await sharp(finalImage)
+      .composite([
+        {
+          input: transparentWatermark,
+          gravity: watermarkOptions.position,
+          blend: 'over'
+        }
+      ])
+      .toBuffer();
   }
-
-  let resizedWatermark = await sharp(watermarkImage)
-    .resize({
-      width: watermarkOptions.width,
-      height: watermarkOptions.height,
-      fit: sharp.fit.cover,
-      background: { r: 0, g: 0, b: 0, alpha: 0 }
-    })
-    .toFormat('png')
-    .toBuffer();
-
-  const transparentWatermark = await applyOpacityToWatermark(resizedWatermark, watermarkOptions.opacity);
-
-  const finalImage = await sharp(baseImage)
-    .composite([
-      {
-        input: transparentWatermark,
-        gravity: watermarkOptions.position,
-        blend: 'over'
-      }
-    ])
-    .toBuffer();
 
   return finalImage;
 };
@@ -83,8 +92,8 @@ export const generateImage = async (options) => {
     }])
     .toFormat('png').toBuffer();
 
-  if (options.watermark) {
-    finalImage = await addWatermark(finalImage, options.watermark);
+  if (options.watermarks) {
+    finalImage = await addWatermarks(finalImage, options.watermarks);
   }
 
   if (options.format === 'jpg' || options.format === 'jpeg') {
