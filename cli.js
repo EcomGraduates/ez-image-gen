@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 
-// Import required modules and functions
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
-import { generateImage, processList } from './imageProcessor.js'; // Assuming this is the module containing your image processing logic
+import { generateImage, processList } from './imageProcessor.js';
 
 const argv = yargs(hideBin(process.argv))
   .option('amount', {
