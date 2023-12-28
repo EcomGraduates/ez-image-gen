@@ -36,13 +36,13 @@ This command generates 5 images with default settings.
 
 ### Customize Image Properties
 
-You can customize the width, height, background color, text color, font size, and watermark of the images:
+You can customize the width, height, background color, text color, font size, and watermarks of the images:
 
 ```
-node ez-image-gen.js --amount 1 --width 300 --height 300 --bg "#FFFFFF" --tc "#000000" --fontSize 24 --watermark "{"path":"path/to/watermark.png","position":"southeast","opacity":0.6,"width":100,"height":100}"
+node ez-image-gen.js --amount 1 --width 300 --height 300 --bg "#FFFFFF" --tc "#000000" --fontSize 24 --watermarks "[{\"path\":\"path/to/watermark1.png\",\"position\":\"southeast\",\"opacity\":0.6,\"width\":100,\"height\":100, \"rotation\":45}, {\"path\":\"path/to/watermark2.png\",\"position\":\"center\",\"opacity\":0.4,\"width\":80,\"height\":80, \"rotation\":-30}]"
 ```
 
-This will generate a 300x300 image with a white background, black text, font size 24, and a watermark at the southeast position with 60% opacity.
+This will generate a 300x300 image with a white background, black text, font size 24, and  watermarks at the southeast position with 60% opacity 45 degree rotation and center position with 40% opacity and -30 degree rotation.
 
 ### Watermark Options
 
@@ -122,24 +122,36 @@ To use Image Generator in your Node.js application, import the `generateImage` f
 import { generateImage } from 'ez-image-gen';
 
 const options = {
-  width: 300,
-  height: 300,
-  backgroundColor: "#FFFFFF",
-  textColor: "#000000",
-  fontSize: 24,
-  textOverlay: "Your Text Here",
-  verbose: true,
-  watermark: {
-    path: "path/to/watermark.png",
-    position: "southeast",
-    opacity: 0.6,
-    width: 100,
-    height: 100
-  },
-  outputPath: "./output",
-  filename: "custom-image",
-  format: "png"
-};
+      width: 1000,
+      height: 1000,
+      backgroundColor: "#0000ff",
+      textColor: "#FFFFFF",
+      fontSize: 24,
+      autoFontSize: true,
+      textOverlay: 'Your text here',
+      outputPath: `./your_path_here`,
+      filename: 'filename',
+      format: 'png',
+      verbose: true,
+      watermarks: [
+        {
+            path: "https://ecomgraduates.com/cdn/shop/files/big_social_32x32.png?v=1626614407",
+            position: "southeast",
+            opacity: 0.6,
+            width: 100,
+            height: 100,
+            rotation: 45
+        },
+        {
+            path: "https://ecomgraduates.com/cdn/shop/files/big_social_32x32.png?v=1626614407",
+            position: "center",
+            opacity: 0.4,
+            width: 80,
+            height: 80,
+            rotation: -30
+        }
+      ],
+    }
 
 generateImage(options)
   .then(() => console.log('Image generated successfully'))
