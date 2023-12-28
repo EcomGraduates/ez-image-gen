@@ -1,6 +1,6 @@
 {
   "name": "ez-image-gen",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "EzImageGen is a simple Node.js command-line tool that allows you to quickly generate images from either a list or from the CLI",
   "main": "imageProcessor.js",
   "type": "module",
