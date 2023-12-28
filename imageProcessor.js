@@ -106,8 +106,7 @@ export const generateImage = async (options) => {
   const outputDirectory = options.outputPath || '.';
   const outputFilePath = path.join(outputDirectory, `${options.filename}.${options.format}`);
   await sharp(finalImage).toFile(outputFilePath);
-
-  console.log(`Generated ${outputFilePath}`);
+  if(options.verbose) console.log(`Generated ${outputFilePath}`);
 };
 
 // Process a list of image generation options
