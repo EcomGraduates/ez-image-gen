@@ -8,6 +8,7 @@
         "fontSize": 48,
         "autoFontSize": true,
         "format": "png",
+        "verbose": true,
         "watermark": {
             "path": "https://ecomgraduates.com/cdn/shop/files/big_social_32x32.png?v=1626614407",
             "position": "southeast",
@@ -25,6 +26,7 @@
         "fontSize": 36,
         "autoFontSize": true,
         "format": "png",
+        "verbose": true,
         "watermark": {
             "path": "https://ecomgraduates.com/cdn/shop/files/big_social_32x32.png?v=1626614407",
             "position": "northwest",
@@ -42,6 +44,7 @@
         "fontSize": 24,
         "autoFontSize": false,
         "format": "png",
+        "verbose": true,
         "watermark": {
             "path": "https://ecomgraduates.com/cdn/shop/files/big_social_32x32.png?v=1626614407",
             "position": "center",
@@ -59,6 +62,7 @@
         "fontSize": 20,
         "autoFontSize": true,
         "format": "png",
+        "verbose": true,
         "watermark": {
             "path": "https://ecomgraduates.com/cdn/shop/files/big_social_32x32.png?v=1626614407",
             "position": "southwest",
@@ -76,6 +80,7 @@
         "fontSize": 30,
         "autoFontSize": false,
         "format": "png",
+        "verbose": true,
         "watermark": {
             "path": "https://ecomgraduates.com/cdn/shop/files/big_social_32x32.png?v=1626614407",
             "position": "northeast",
@@ -93,6 +98,7 @@
         "fontSize": 40,
         "autoFontSize": true,
         "format": "png",
+        "verbose": true,
         "watermark": {
             "path": "https://ecomgraduates.com/cdn/shop/files/big_social_32x32.png?v=1626614407",
             "position": "east",
