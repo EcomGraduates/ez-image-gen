@@ -7,7 +7,14 @@
         "textColor": "#000000",
         "fontSize": 48,
         "autoFontSize": true,
-        "format": "png"
+        "format": "png",
+        "watermark": {
+            "path": "https://ecomgraduates.com/cdn/shop/files/big_social_32x32.png?v=1626614407",
+            "position": "southeast",
+            "opacity": 0.6,
+            "width": 100,
+            "height": 100 
+        }
     },
     {
         "textOverlay": "Image 2 Text Overlay",
@@ -17,7 +24,14 @@
         "textColor": "#FFFFFF",
         "fontSize": 36,
         "autoFontSize": true,
-        "format": "png"
+        "format": "png",
+        "watermark": {
+            "path": "https://ecomgraduates.com/cdn/shop/files/big_social_32x32.png?v=1626614407",
+            "position": "northwest",
+            "opacity": 0.4,
+            "width": 100,
+            "height": 100 
+        }
     },
     {
         "textOverlay": "Image 3 Text Overlay",
@@ -27,6 +41,64 @@
         "textColor": "#0000FF",
         "fontSize": 24,
         "autoFontSize": false,
-        "format": "png"
+        "format": "png",
+        "watermark": {
+            "path": "https://ecomgraduates.com/cdn/shop/files/big_social_32x32.png?v=1626614407",
+            "position": "center",
+            "opacity": 0.2,
+            "width": 100,
+            "height": 100 
+        }
+    },
+    {
+        "textOverlay": "Image 4 Text Overlay",
+        "width": 250,
+        "height": 250,
+        "backgroundColor": "#FA8072",
+        "textColor": "#333333",
+        "fontSize": 20,
+        "autoFontSize": true,
+        "format": "png",
+        "watermark": {
+            "path": "https://ecomgraduates.com/cdn/shop/files/big_social_32x32.png?v=1626614407",
+            "position": "southwest",
+            "opacity": 0.5,
+            "width": 50,
+            "height": 50 
+        }
+    },
+    {
+        "textOverlay": "Image 5 Text Overlay",
+        "width": 350,
+        "height": 350,
+        "backgroundColor": "#808080",
+        "textColor": "#FFFF00",
+        "fontSize": 30,
+        "autoFontSize": false,
+        "format": "png",
+        "watermark": {
+            "path": "https://ecomgraduates.com/cdn/shop/files/big_social_32x32.png?v=1626614407",
+            "position": "northeast",
+            "opacity": 0.3,
+            "width": 80,
+            "height": 80 
+        }
+    },
+    {
+        "textOverlay": "Image 6 Text Overlay",
+        "width": 500,
+        "height": 500,
+        "backgroundColor": "#4682B4",
+        "textColor": "#FFFFFF",
+        "fontSize": 40,
+        "autoFontSize": true,
+        "format": "png",
+        "watermark": {
+            "path": "https://ecomgraduates.com/cdn/shop/files/big_social_32x32.png?v=1626614407",
+            "position": "east",
+            "opacity": 0.7,
+            "width": 120,
+            "height": 120 
+        }
     }
 ]
