@@ -74,6 +74,12 @@ const argv = yargs(hideBin(process.argv))
     type: 'string',
     default: 'image-'
   })
+  .option('verbose', {
+    alias: 'v',
+    describe: 'Print verbose output',
+    type: 'boolean',
+    default: false
+  })
   .option('watermark', {
     describe: 'Watermark settings',
     type: 'object',
@@ -82,7 +88,7 @@ const argv = yargs(hideBin(process.argv))
         return JSON.parse(arg);
       }
       return arg;
-    }
+    },
   })
   .check(argv => {
     if (!argv.list && !argv.amount) {
