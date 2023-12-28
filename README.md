@@ -128,6 +128,7 @@ const options = {
   textColor: "#000000",
   fontSize: 24,
   textOverlay: "Your Text Here",
+  verbose: true,
   watermark: {
     path: "path/to/watermark.png",
     position: "southeast",
